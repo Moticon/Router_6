@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:background="@color/colorAccent"
+    android:layout_height="45dp">
+
+    <TextView
+        android:textSize="18sp"
+        android:layout_margin="2dp"
+        android:padding="3dp"
+        android:textColor="@color/colorDarkText"
+        android:text="LL2P Address"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/LL2PAdjacencyTextView"
+        android:background="@color/colorTopLevel"
+        android:gravity="center_vertical"
+        android:layout_weight="0.25" />
+
+    <TextView
+        android:textSize="18sp"
+        android:layout_margin="2dp"
+        android:padding="3dp"
+        android:textColor="@color/colorDarkText"
+        android:text="IP Address"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/IPAddressAdjacencyTextView"
+        android:background="@color/colorTopLevel"
+        android:layout_weight="0.5" />
+
+    <Button
+        android:text="Connect"
+        android:textSize="18sp"
+        android:layout_margin="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:background="@color/colorTopLevel"
+        android:id="@+id/setAdjacencyStatusButton"
+        android:layout_weight="0.25" />
+</LinearLayout>

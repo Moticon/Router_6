@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/add_adjacency_layout"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:text="Enter Hex LL2P Address Below"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll2pAddressLabelTextView" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="314159"
+        android:ems="10"
+        android:id="@+id/ll2pAddressEditText"
+        />
+
+    <TextView
+        android:text="Enter IP Address Below"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ipAddressLabelTextView" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="10.0.1.1"
+        android:ems="10"
+        android:inputType="text"
+        android:id="@+id/ipAddressEditText"
+        android:imeOptions="actionDone"/>
+
+    <Button
+        android:text="Add Adjacency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addAdjacencyButton" />
+
+    <Button
+        android:text="Cancel"
+        android:id="@+id/cancelAddAdjacencyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.moticon.routersixteen.Router">
+
+    <item
+        android:id="@+id/showIPAddress"
+        android:orderInCategory="110"
+        android:title="@string/IPMenuItem">
+
+    </item>
+
+    <item
+        android:id="@+id/setAdjacency"
+        android:orderInCategory="120"
+        android:title="Add Adjacency">
+    </item>
+
+    <item
+        android:id="@+id/runRouterTest"
+        android:orderInCategory="120"
+        android:title="runRouter Test">
+    </item>
+
+
+    <item
+        android:id="@+id/openMessenger"
+        android:orderInCategory="120"
+        android:title="Open Messenger">
+    </item>
+
+</menu>

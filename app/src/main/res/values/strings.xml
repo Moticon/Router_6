@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Software and Network Engineering Router</string>
+    <string name="title_bar_text">Professor Smith\'s Router</string>
+    <string name="table_title_bar_text">Internal Tables</string>
+    <string name="IPMenuItem">Show IP Address</string>
+    <string name="addAdjacencyButtonString">Add Adjacency</string>
+    <string name="name_prompt">Send to?</string>
+    <string-array name="class_members">
+        <item>The Prof\'s tablet</item>
+        <item>Brigette</item>
+        <item>Caleb</item>
+        <item>Daniel</item>
+        <item>Gaelle</item>
+        <item>jake</item>
+        <item>Juliette</item>
+        <item>Lance</item>
+        <item>Martine</item>
+        <item>Michael</item>
+        <item>Nicholas</item>
+        <item>Raja</item>
+        <item>Richard</item>
+        <item>Unknown!</item>
+        <item>The Prof\'s Phone</item>
+    </string-array>
+</resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/messengerLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/parchment"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/messengerTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Lab Messenger"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/black" />
+
+    <Spinner
+        android:id="@+id/nameSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/name_prompt" />
+
+    <ListView
+        android:id="@+id/recievedMessagesListView"
+        android:layout_width="match_parent"
+        android:layout_height="246dp"
+        android:layout_weight="0.91"
+        android:divider="@color/orange"
+        android:dividerHeight="1dip"
+        android:textColor="@color/black"></ListView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/messengerSendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send" />
+
+        <EditText
+            android:id="@+id/messengerEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.06"
+            android:hint="enter message for friend">
+
+            <requestFocus />
+
+        </EditText>
+
+        <Button
+            android:id="@+id/messengerExitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exit" />
+
+    </LinearLayout>
+
+</LinearLayout>
