@@ -21,6 +21,26 @@ import static com.moticon.network.Constants.newline;
  */
 
 public class LL2PFrame implements Datagram {
+    /*
+     *  For all these in 2018, Consider declaring them as Interface types - DatagramHeaderFields.
+     *   - Then for all methods in the class they should be using the interface methdos for header fields.
+     *
+     *   For the unusual case where an object's unique method is needed then you could typecast it.
+     *     - for example, usually people will need the destination address as an integer.
+     *     instead of providing amethod that returns the destination address field object,
+     *     we honor the principle of "least knowledge". We don't actually return the field, we
+       *     have a method that returns the integer tha tis needed. In that method we typecast
+       *     the datagramHeaderField object into a LL2PAddressField object to get to its method
+       *     that returns an integer (the method that *isn't* part of the DatagramHeaderField interface.
+       *
+       *     Thus we are honoring both "Coding to an interface" and "principle of least knowledge"
+       *     and we eliminate all teh type casting in teh constructor, and also the factory method is
+       *     returning the type of object we're really using.
+       *
+       *     Credit to Corbin Young for the discussion that brought this thought to mind.
+       *
+       *     TODO: Implement the above everywhere it makes sense!!
+     */
     private LL2PAddressField destinationAddress;
     private LL2PAddressField sourceAddress;
     private LL2PTypeField type;

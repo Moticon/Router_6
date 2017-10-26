@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.moticon.UI.AddAdjacencyDialog;
+import com.moticon.UI.ChangeL3AddressDialog;
 import com.moticon.UI.UIManager;
 import com.moticon.network.Constants;
 import com.moticon.network.daemons.LL1Daemon;
@@ -39,6 +40,12 @@ public class RouterActivity extends AppCompatActivity implements AddAdjacencyDia
             TestRouterFunction.getInstance().runTest();
         } else if (item.getItemId() == R.id.openMessenger){
             uiManager.openMessengerWindow();
+        }else if (item.getItemId() == R.id.modifyLL2P){
+            DialogFragment dialog = new ChangeL3AddressDialog();
+            dialog.show(getFragmentManager(), "Change Layer 2");
+        }else if (item.getItemId() == R.id.modifyLL3P){
+            DialogFragment dialog = new ChangeL3AddressDialog();
+            dialog.show(getFragmentManager(), "Change Layer 3");
         }
         return super.onOptionsItemSelected(item);
     }
@@ -55,4 +62,6 @@ public class RouterActivity extends AppCompatActivity implements AddAdjacencyDia
     public void onFinishedEditDialog(String ipAddress, String ll2PAddress) {
         LL1Daemon.getInstance().addAdjacency(ll2PAddress, ipAddress);
     }
+
+    public Constants getConstants(){return Constants.getInstance();}
 }

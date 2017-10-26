@@ -6,6 +6,7 @@ import com.moticon.network.Constants;
 import com.moticon.network.RecordTypes.RoutingRecord;
 import com.moticon.network.RecordTypes.TableRecord;
 import com.moticon.support.LabException;
+import com.moticon.support.Utilities;
 
 import java.util.ArrayList;
 
@@ -51,7 +52,7 @@ public class RoutingTable extends TimedTable {
             RoutingRecord entry = (RoutingRecord) getItem(newEntry.getKey());
             // if we're still here we found the record. Compare and either add or touch.
             // we know it's the com.moticon.network from this source.
-            if (entry.getDistance() == ((RoutingRecord) newEntry).getDistance())
+            if (entry.getDistance().equals(((RoutingRecord) newEntry).getDistance()))
                 touch(entry.getKey());
             else {
                 // replace and remove.  You must do this no matter what the distance is.
@@ -88,7 +89,7 @@ public class RoutingTable extends TimedTable {
             RoutingRecord entry = (RoutingRecord) getItem(newEntry.getKey());
             // if we're still here we found the record. Compare and either add or touch.
             // we know it's the com.moticon.network from this source.
-            if (entry.getDistance() == ((RoutingRecord) newEntry).getDistance())
+            if (entry.getDistance().equals(((RoutingRecord) newEntry).getDistance()))
                 touch(entry.getKey());
             else if (((RoutingRecord) newEntry).getDistance() < entry.getDistance()){
                 // replace and remove.  You must do this no matter what the distance is.
@@ -122,7 +123,8 @@ public class RoutingTable extends TimedTable {
          */
         synchronized (table) {
             for (TableRecord routeRecord : table){
-                if (((RoutingRecord) routeRecord).getNextHop() != sourceLL3P)  {
+                if (!(((RoutingRecord) routeRecord).getNextHop().equals(sourceLL3P)) &&
+                    !((RoutingRecord) routeRecord).getNetworkNumber().equals(Utilities.getNetworkNumberFromLL3P(sourceLL3P)))   {
                     returnTable.add(routeRecord);
                 }
             }
@@ -157,7 +159,7 @@ public class RoutingTable extends TimedTable {
     private boolean removeOneRouteFromNeighbor(Integer neighborLL3P){
         synchronized (table) {
             for (TableRecord routeRecord : table){
-                if (((RoutingRecord) routeRecord).getNextHop() == neighborLL3P)  {
+                if (((RoutingRecord) routeRecord).getNextHop().equals(neighborLL3P))  {
                     removeItem(routeRecord.getKey());
                     return true;
                 }
@@ -186,7 +188,7 @@ public class RoutingTable extends TimedTable {
                     // Use to do it this way. Seemed to be causing problems.
                     // returnList.add(nextRecord);
                 } catch (LabException e) {
-                    // do nothing. this just means there were no routes for that com.moticon.network.
+                    // do nothing. this just means there were no routes for that network.
                 }
             }
             Log.i(Constants.logTag, " ----- Best Routes for all networks - LIST FOLLOWS++++++++++++++++++++++++++++++++++++++");
@@ -210,24 +212,13 @@ public class RoutingTable extends TimedTable {
         Integer bestDistance = 16; // max distance is 15, so this should be a good "max"
         synchronized (table) {
             for (TableRecord routeRecord : table){
-                if ((((RoutingRecord) routeRecord).getNetworkNumber() == networkNumber) &&
+                if ((((RoutingRecord) routeRecord).getNetworkNumber().equals(networkNumber)) &&
                     (((RoutingRecord) routeRecord).getDistance() < bestDistance)){
                        found = true;
                        returnRecord = (RoutingRecord) routeRecord;
                 }
             }
         }
-        /*
-        Iterator<TableRecord> tableIterator = table.iterator();
-        RoutingRecord tmp=null;
-        while (tableIterator.hasNext()){
-            tmp = (RoutingRecord) tableIterator.next();
-            if ((tmp.getNetworkNumber() == networkNumber) && (tmp.getDistance() < bestDistance))  {
-                found = true;
-                returnRecord = tmp;
-            }
-        }
-        */
         if (!found){
             throw new LabException("No Route found for com.moticon.network "+ Integer.toHexString(networkNumber));
         }

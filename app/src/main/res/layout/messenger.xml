@@ -24,7 +24,7 @@
     <ListView
         android:id="@+id/recievedMessagesListView"
         android:layout_width="match_parent"
-        android:layout_height="246dp"
+        android:layout_height="120dp"
         android:layout_weight="0.91"
         android:divider="@color/orange"
         android:dividerHeight="1dip"

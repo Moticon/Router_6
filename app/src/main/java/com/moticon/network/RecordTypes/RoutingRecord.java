@@ -65,9 +65,12 @@ public class RoutingRecord extends TableRecordClass {
     }
 
     public String toString(){
-        return "Key: " + Integer.toHexString(key)
+/*        return "Key: " + Integer.toHexString(key)
                 + " (" + Integer.toHexString((key/256)/256) + "." +  Integer.toHexString(key%(256*256)) + "); "
                 + networkDistancePair.toString() + "; Next Hop "
+                + Utilities.LL3PToString(nextHop) + "; Age: "
+                + Integer.toString(getCurrentAgeInSeconds()) + "s";*/
+        return networkDistancePair.toString() + "; Next Hop "
                 + Utilities.LL3PToString(nextHop) + "; Age: "
                 + Integer.toString(getCurrentAgeInSeconds()) + "s";
     }

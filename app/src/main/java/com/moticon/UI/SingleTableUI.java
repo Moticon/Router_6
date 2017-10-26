@@ -36,7 +36,7 @@ public class SingleTableUI implements Observer {
         tableToDisplay = (Table) table;
         tableList = table.getTable();
         adapter = new ArrayAdapter(parentActivity.getBaseContext(),
-                R.layout.simple_table_row, table.getTable());
+                R.layout.default_table_item, table.getTable());
         tableListView = (ListView) parentActivity.findViewById(view);
         tableListView.setAdapter(adapter);
         //tableToDisplay.addObserver(this);

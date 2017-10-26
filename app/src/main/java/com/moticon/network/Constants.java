@@ -1,5 +1,7 @@
 package com.moticon.network;
 
+import com.moticon.UI.ChangeL3AddressDialog;
+import com.moticon.UI.UIManager;
 import com.moticon.support.BootLoader;
 
 import java.net.Inet4Address;
@@ -14,7 +16,7 @@ import java.util.Observer;
  * Created by pat.smith on 11/11/2016.
  */
 
-public class Constants implements Observer {
+public class Constants implements Observer, ChangeL3AddressDialog.EditNameDialogListener {
     static Constants constants = new Constants();
 
     // my routers' addresses
@@ -25,6 +27,10 @@ public class Constants implements Observer {
 
     public static Integer MAX_TTL = 15;
     public static String LL3P_IDENTIFIER = "FACE";
+
+    // dialog specification
+    public static final int changeLL3PAddress = 100;
+    public static final int changeLL2PAddress = 101;
 
     // Global names and strings
     public static String routerName = new String("Magrathea");
@@ -180,6 +186,19 @@ public class Constants implements Observer {
         if (observable.getClass() == BootLoader.class){
             // called by the bootloader... wire this object to other objects it needs.
             // nothing right now.
+        }
+    }
+
+    @Override
+    public void onFinishEditDialog(int valueToChange, String inputText) {
+        switch (valueToChange){
+            case changeLL2PAddress:
+                MY_LL2P_ADDRESS = Integer.valueOf(inputText, 16);
+                break;
+            case changeLL3PAddress:
+                MY_LL3P_ADDRESS = Integer.valueOf(inputText, 16);
+                MY_LL3P_ADDRESS_STRING = inputText;
+            default:
         }
     }
 }

@@ -28,12 +28,12 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * This is a stand-alone window class you can import into your project.  Steps:
- * 1. instantiate this class as an object in your UIManager. You should do this in the
- *    UIManager's constructor method.  Just pass the activity down to this object.
- * 2. The LL3Daemon needs to have a reference to this class.  The com.moticon.UI Manager should have a
- *    'getMessenger()' method to return it to the LL3Daemon. The LL3Daemon calls this class's
+ * 1. instantiate this class as an object in your UIManager.
+ *      In the UIManager's update(...) method call the Messenger's finishCreatingMEssenger() method.
+ * 2. The LL3Daemon needs to have a reference to this class.  The Manager should have a getter
+ *    method to return the Messenger object to the LL3Daemon. The LL3Daemon calls this class's
  *    receiveMessage(String) method to get things displayed in the screen.
- * 3. This method uses the following router classes:
+ * 3. This class uses the following router classes:
  * 		UIManager - the raiseToast/displayMessage is used.  This can be deleted if you prefer.
  * 	    RoutingTable - the forwarding table is retrieved from the LRP Daemon.
  * 	       -- this is called forwarding table.
@@ -91,13 +91,9 @@ public class Messenger implements Runnable {
     private MessageAdapter messageAdapter;				  // the custom adapter to build and display screen objects.
 
     private ScheduledThreadPoolExecutor nameWatcher;			  // manages thread to watch the spinner and keep it up to date
-    // todo implement sound player
-    // todo - add soundplayer - defined below.
-    // private SoundPlayer soundPlayer;
+
     /**
-     * Constructor.
-     * @param activity - pass the parent activity that contains context and com.moticon.UI elements.
-     *                 THe constructor is called from the UImanager's update method.
+     * Constructor. MT... get it? MT?
      */
     public Messenger(){
 

@@ -30,4 +30,15 @@
         android:title="Open Messenger">
     </item>
 
+    <item
+        android:id="@+id/modifyLL3P"
+        android:orderInCategory="120"
+        android:title="Modify LL3P">
+    </item>
+
+    <item
+        android:id="@+id/modifyLL2P"
+        android:orderInCategory="120"
+        android:title="Modify Layer 2 Addr">
+    </item>
 </menu>
